@@ -9,9 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created on 16.08.2016.
- */
 public class ModelValidator {
 
     private Validator validator = new Validator();
@@ -19,13 +16,13 @@ public class ModelValidator {
     public Map<String, List<String>> mValid(Object object) {
 
         List<ConstraintViolation> errs = validator.validate(object);
-        Map<String, List<String>> msg = new HashMap<String, List<String>>();
+        Map<String, List<String>> msg = new HashMap<>();
         if (errs.size() > 0) {
             for (ConstraintViolation cv : errs){
                 String key = (((FieldContext)cv.getContext()).getField().getName());
                 List<String> list = msg.get(key);
                 if(list ==null){
-                    list = new ArrayList<String>();
+                    list = new ArrayList<>();
                     list.add(cv.getMessage());
                 }else{
                     list.add(cv.getMessage());

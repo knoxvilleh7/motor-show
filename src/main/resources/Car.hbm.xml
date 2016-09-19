@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="project.model">
+    <class name="Car" table="CARS">
+        <id name="id" column="ID">
+            <generator class="native"/>
+        </id>
+        <property name="model" column="car_model" />
+        <property name="productionDate" column="CAR_PRODUCTION_DATE" />
+        <property name="manufacturer" column="car_manufacturer" />
+        <property name="manufacturerEmail" column="car_manufacturer_email" />
+        <property name="motorShowId" column="motor_show_id" />
+        <property name="price" column="car_price" />
+        <property name="engineVolume" column="car_engine_volume" />
+        <property name="vinCode" column="car_vin_code" />
+        <many-to-one name="motorShow" class="MotorShow"
+                     column="motor_show_id" not-null="true" insert="false" update="false"/>
+    </class>
+</hibernate-mapping>

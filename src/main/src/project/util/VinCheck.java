@@ -1,22 +1,23 @@
 package project.util;
 
 import net.sf.oval.constraint.CheckWithCheck;
-import project.dao.CarDao;
-import project.dao.CarDaoImpl;
 import project.model.Car;
+import project.service.CarService;
 
-/**
- * Created on 16.08.2016.
- */
 public class VinCheck implements CheckWithCheck.SimpleCheck {
 
-    private CarDao carDao = new CarDaoImpl();
-    public boolean isSatisfied(Object valObj, Object value) {
+    private CarService dao = SpringUtils.getBean(CarService.class);
 
-        String i = value.toString();
-        int vin = Integer.parseInt(i);
-        Car carFromBase = carDao.getCarByVin(vin);
-        return carFromBase==null || (carFromBase.getId().equals(((Car)valObj).getId()));
-        
+    public boolean isSatisfied(Object valObj, Object value) {
+        if (valObj instanceof Car) {
+            Car carFromBase = null;
+            try {
+                carFromBase = dao.getCarByVin(value.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return carFromBase == null || (carFromBase.getId().equals(((Car) valObj).getId()));
+        }
+        return false;
     }
 }

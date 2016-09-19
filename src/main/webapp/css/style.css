@@ -1,0 +1,173 @@
+.container {
+    width: auto;
+}
+.form{
+ color: #ffffff;
+}
+.carEdition {
+    height: 550px;
+    margin-left: 4%;
+}
+.btn-Edit{
+    background-color: #64696e;
+}
+.navbar-nav{
+    width: 1020px;
+}
+.search{
+    width: 290px;
+}
+.menu-bar {
+    width: 70px;
+    height: 50px;
+}
+.menu-bar-beg {
+    width: 120px;
+    height: 50px;
+}
+.menu-bar-page{
+    margin-left: 20px;
+    width: 75px;
+    height: 50px;
+}
+.menu-bar-count{
+    margin-left: 10px;
+    width: 40px;
+    height: 50px;
+}
+.bar-left{
+    width: 1000px;
+}
+.pageCount{
+    width: 27px;
+    height: 30px;
+}
+.select{
+    width: 155px;
+}
+.selectMotorShow{
+    background-color: rgba(43, 54, 55, 0.85);
+    width: 170px;
+}
+.motorShowEdition {
+    height: 550px;
+    margin-top: 7%;
+}
+.search-ms{
+    margin-left: 20px;
+}
+
+body.carEdit {
+    background-image: url("/img/bmv.jpg");
+}
+body.motorShowEdit {
+    background-color: #949e9e;
+
+}
+
+.refs {
+    margin-top: 310px;
+    margin-left: 120px;
+}
+.btn-navbar{
+    border-color: #ffffff;
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.btn-primary {
+    height: 120px;
+    width: 120px;
+    margin-left: 450px;
+    text-align: center;
+    line-height: 110px;
+    font-family: SansSerif, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 35px;
+    color: White;
+}
+
+.btn-danger {
+    height: 120px;
+    width: 120px;
+    text-align: center;
+    line-height: 40px;
+    font-family: SansSerif, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    color: White;
+}
+
+.form {
+    margin-top: 110px;
+    margin-left: 10%;
+}
+
+.form-group {
+    height: 34px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+.text-right {
+    color: #ffffff;
+}
+
+.table_price {
+    margin-top: 60px;
+    border-collapse: collapse;
+    border-left: 3px solid white;
+    border-right: 3px solid white;
+    border-bottom: 3px solid white;
+    font-family: "Lucida Grande", sans-serif;
+    margin-bottom: 40px;
+}
+
+.table_price caption {
+    background: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px;
+    color: #000000;
+    font-family: "Roboto Slab", serif;
+    font-style: normal;
+    font-size: 26px;
+    text-align: center;
+    margin: 0;
+}
+
+.table_price td, .table_price th {
+    padding: 10px;
+}
+
+.table_price th {
+    text-align: left;
+    font-size: 18px;
+    width: 135px;
+}
+
+.table_price tr:nth-child(2n) {
+    background: #E5E5E5;
+}
+
+.table_price td:last-of-type {
+    text-align: center;
+}
+
+.table_price a {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #F79361;
+    box-shadow: 2px 2px 0 0 #a22800;
+    position: relative;
+}
+
+.table_price a:hover {
+    box-shadow: none;
+    top: 2px;
+    left: 2px;
+}
