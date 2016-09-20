@@ -4,6 +4,7 @@ import net.sf.oval.constraint.CheckWithCheck;
 import project.model.Car;
 import project.service.CarService;
 
+
 public class VinCheck implements CheckWithCheck.SimpleCheck {
 
     private CarService dao = SpringUtils.getBean(CarService.class);

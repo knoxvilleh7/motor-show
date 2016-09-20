@@ -1,69 +1,67 @@
 package project.model;
 
 import net.sf.oval.constraint.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import project.util.VinCheck;
 
-import java.sql.Date;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.Objects;
 
+@Entity
+@Table(name= "CARS", schema="registration")
 public class Car {
 
-   private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
+    @Column(name= "car_model", length=100)
     @NotNull(message = "Field is empty")
     @NotEmpty (message = "Field is empty")
     private String model;
 
+    @Column(name= "car_production_date")
+    @Temporal(value=TemporalType.DATE)
     @DateRange (max = "today", message = "Wrong date")
     @NotNull (message = "Field is empty")
     @NotEmpty (message = "Field is empty")
     private Date productionDate;
 
+    @Column(name= "car_manufacturer", length=100)
     @NotNull(message = "Field is empty")
     @NotEmpty(message = "Field is empty")
     private String manufacturer;
 
+    @Column(name= "car_manufacturer_email", length=100)
     @NotNull(message = "Field is empty")
     @NotEmpty(message = "Field is empty")
     @Email (message = "E-mail is not real")
     private String manufacturerEmail;
 
-    @NotNull(message = "Field is empty")
-    @NotEmpty(message = "Field is empty")
-    @Min(value = 0, message = "Negative value")
-    private Integer motorShowId;
-
+    @Column(name= "car_price")
     @NotNull(message = "Field is empty")
     @NotEmpty(message = "Field is empty")
     @Min(value = 0, message = "Negative value")
     private Double price;
 
+    @Column(name= "car_engine_volume")
     @NotNull(message = "Field is empty")
     @NotEmpty(message = "Field is empty")
     @Min(value = 0, message = "Negative value")
     private Double engineVolume;
 
+    @Column(name= "car_vin_code")
     @NotNull(message = "Field is empty")
     @NotEmpty(message = "Field is empty")
     @CheckWith(value = VinCheck.class, message = "Car already exists")
     private String vinCode;
 
+    @ManyToOne(fetch=FetchType.EAGER)
+    @Fetch(FetchMode.JOIN)
+    @JoinColumn(name = "motor_show_id")
     private MotorShow motorShow;
-
-    public Car(String model, Date productionDate, String manufacturer, String manufacturerEmail, Integer motorShowId,
-               Double price, Double engineVolume, String vinCode, MotorShow motorShow) {
-        this.model = model;
-        this.productionDate = productionDate;
-        this.manufacturer = manufacturer;
-        this.manufacturerEmail = manufacturerEmail;
-        this.motorShowId = motorShowId;
-        this.price = price;
-        this.engineVolume = engineVolume;
-        this.vinCode = vinCode;
-        this.motorShow = motorShow;
-    }
-
-    public Car() {
-    }
 
     public String getModel() {
         return model;
@@ -95,14 +93,6 @@ public class Car {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getMotorShowId() {
-        return motorShowId;
-    }
-
-    public void setMotorShowId(Integer motorShowId) {
-        this.motorShowId = motorShowId;
     }
 
     public String getManufacturer() {
@@ -143,39 +133,5 @@ public class Car {
 
     public void setMotorShow(MotorShow motorShow) {
         this.motorShow = motorShow;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Car car = (Car) o;
-
-        if (!id.equals(car.id)) return false;
-        if (!model.equals(car.model)) return false;
-        if (!productionDate.equals(car.productionDate)) return false;
-        if (!manufacturer.equals(car.manufacturer)) return false;
-        if (!manufacturerEmail.equals(car.manufacturerEmail)) return false;
-        if (!motorShowId.equals(car.motorShowId)) return false;
-        if (!price.equals(car.price)) return false;
-        if (!engineVolume.equals(car.engineVolume)) return false;
-        if (!vinCode.equals(car.vinCode)) return false;
-        return motorShow.equals(car.motorShow);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + model.hashCode();
-        result = 31 * result + productionDate.hashCode();
-        result = 31 * result + manufacturer.hashCode();
-        result = 31 * result + manufacturerEmail.hashCode();
-        result = 31 * result + motorShowId.hashCode();
-        result = 31 * result + price.hashCode();
-        result = 31 * result + engineVolume.hashCode();
-        result = 31 * result + vinCode.hashCode();
-        result = 31 * result + motorShow.hashCode();
-        return result;
     }
 }

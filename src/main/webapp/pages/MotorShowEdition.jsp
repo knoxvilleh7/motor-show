@@ -1,28 +1,26 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="errors" scope="request" type="java.util.Map"/>
-<jsp:useBean id="motorShow" scope="request" class="project.model.MotorShow"/>
-<c:set var="urlMotorShowList" value="motorshows"/>
-<c:set var="urlCarList" value="cars"/>
-<c:set var="urlMotorShowSave" value="mssave"/>
+<c:set var="urlMotorShowSave" value="/motor_show/save"/>
+<c:set var="urlMotorShows" value="/motor_show/list"/>
+<c:set var="urlCars" value="/car/list"/>
+<c:set var="urlMain" value="/main"/>
+<c:set var="urlBootstrap" value="/css/bootstrap.min.css"/>
+<c:set var="urlStyle" value="/css/style.css"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
-
+    <link href="${urlBootstrap}" rel="stylesheet" type="text/css" media="all"/>
+    <link href="${urlStyle}" rel="stylesheet" type="text/css" media="all"/>
     <title>Create or edit motor show</title>
 </head>
 <body class="motorShowEdit">
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
-        <div class="collapse navbar-collapse" id="responsive-menu">
-            <ul class="nav navbar-nav">
-                <li><a href="${pageContext.request.contextPath}/">Main page</a></li>
-                <li><a href="${urlMotorShowList}">All motor shows</a></li>
-                <li><a href="${urlCarList}">All cars</a></li>
-            </ul>
-        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="${urlMain}">Main page</a></li>
+            <li><a href="${urlCars}">All cars</a></li>
+            <li><a href="${urlMotorShows}">All motor shows</a></li>
+        </ul>
     </div>
 </div>
 
@@ -35,7 +33,7 @@
             </div>
         </div>
         <div class="col-sm-offset-4">
-            ${errors.name}
+            ${errs.name}
         </div>
         <div class="form-group">
             <label for="address" class="text-right col-sm-3">Motor show address:</label>
@@ -44,7 +42,7 @@
             </div>
         </div>
         <div class="col-sm-offset-4">
-            ${errors.address}
+            ${errs.address}
         </div>
         <div class="col-sm-offset-6">
             <button type="submit" class="btn btn-Edit">Submit</button>

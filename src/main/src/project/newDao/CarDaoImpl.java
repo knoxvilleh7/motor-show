@@ -4,18 +4,22 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.stereotype.Repository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import project.model.Car;
 
 import java.util.List;
 
-@Repository
+@Component
+@Transactional
 public class CarDaoImpl extends NewDaoGenericsImpl<Car> implements CarDao {
 
-    public CarDaoImpl(Class aClass) {
-        super(aClass);
+    public CarDaoImpl() {
+        super(Car.class);
     }
 
+    @Autowired
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
@@ -23,11 +27,11 @@ public class CarDaoImpl extends NewDaoGenericsImpl<Car> implements CarDao {
     @SuppressWarnings("unchecked")
     public List<Car> getCarsByMSId(Integer MotorShowId, Integer pageNumber, Integer pageSize) {
 
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         List<Car> cars = null;
         try {
 
-            Criteria criteria = session.createCriteria(Car.class).add(Restrictions.eq("motorShowId", MotorShowId));
+            Criteria criteria = session.createCriteria(Car.class).add(Restrictions.eq("motorShow.id", MotorShowId));
             criteria.setFirstResult((pageNumber - 1) * pageSize);
             criteria.setMaxResults(pageSize);
             cars = criteria.list();
@@ -39,7 +43,7 @@ public class CarDaoImpl extends NewDaoGenericsImpl<Car> implements CarDao {
     @Override
     @SuppressWarnings("unchecked")
     public Car getByVin(String vinCode) {
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         Car car = null;
         try {
             Criteria criteria = session.createCriteria(Car.class).add(Restrictions.eq("vinCode", vinCode));

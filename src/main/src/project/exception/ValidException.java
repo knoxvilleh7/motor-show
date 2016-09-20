@@ -3,7 +3,7 @@ package project.exception;
 import java.util.List;
 import java.util.Map;
 
- public class ValidException extends Exception {
+public class ValidException extends Exception {
 
     private Map<String, List<String>> errs;
 

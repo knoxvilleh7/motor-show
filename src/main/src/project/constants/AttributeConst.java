@@ -4,15 +4,10 @@ public class AttributeConst {
 
     public static final String CARS = "cars";
     public static final String CAR = "car";
-    public static final String ID = "id";
-    public static final String MSID = "motorShowId";
-    public static final String MSIDOP = "motorShowIdOnPage";
-    public static final String MSHOWS = "mShows";
-    public static final String MOTORSHOW = "motorShow";
-    public static final String ERRS = "errors";
-    public static final String MSIDFS = "motorShowIdFromSelect";
-    public static final String MSIDFH = "motorShowIdFromHidden";
-    public static final String PAGE = "pageList";
-    public static final String SEARCH = "search";
-    public static final String SEARCH_BY = "searchBy";
+    public static final String MOTOR_SHOWS = "motorShows";
+    public static final String MOTOR_SHOW = "motorShow";
+    public static final String ERRS = "errs";
+    public static final String PAGE = "page";
+    public static final String SEARCH_VALUE = "searchValue";
+    public static final Integer PAGE_SIZE_FOR_SEARCH = 999;
 }

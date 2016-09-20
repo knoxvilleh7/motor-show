@@ -22,4 +22,7 @@ public interface MotorShowService {
     Long getMotorShowForSearchCount(Object  searchValue, String searchCategory);
 
     List<MotorShow> getMotorShowsBySearch(Object searchValue,String searchCategory,Integer PageNumber,Integer PageSize);
+
+
+
 }

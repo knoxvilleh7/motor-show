@@ -1,5 +1,8 @@
 package project.model;
 
+/**
+ * Created on 25.08.2016.
+ */
 public class Page {
 
     private Integer pageNumber;

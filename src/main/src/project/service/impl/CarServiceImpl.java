@@ -1,10 +1,12 @@
-package project.service;
+package project.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import project.exception.ValidException;
 import project.model.Car;
 import project.newDao.CarDao;
+import project.service.CarService;
 import project.util.ModelValidator;
 
 import java.util.List;
@@ -16,13 +18,14 @@ import static project.constants.AttributeConst.CAR;
 @Transactional
 public class CarServiceImpl implements CarService {
 
-    private CarDao carDao;
-
-    public void setCarDao(CarDao carDao) {
-        this.carDao = carDao;
-    }
+    private final CarDao carDao;
 
     private ModelValidator mv = new ModelValidator();
+
+    @Autowired
+    public CarServiceImpl(CarDao carDao) {
+        this.carDao = carDao;
+    }
 
     @Transactional
     public void saveCar(Car car) throws ValidException{
@@ -35,7 +38,7 @@ public class CarServiceImpl implements CarService {
     }
 
     public List<Car> getCarsByMSId(Integer MotorShowId, Integer pageNumber, Integer pageSize) {
-        return this.carDao.getCarsByMSId(MotorShowId, pageNumber, pageSize);
+        return carDao.getCarsByMSId(MotorShowId, pageNumber, pageSize);
     }
 
     public Car getCarById(Integer id) {
@@ -56,11 +59,11 @@ public class CarServiceImpl implements CarService {
     }
 
     public Long getCarForSearchCount(Object  searchValue,String searchCategory) {
-        return this.carDao.getCountForSearch(searchValue,searchCategory, null);
+        return carDao.getCountForSearch(searchValue,searchCategory, null);
     }
 
     public Long getCarForSearchCountInMotorShow(Object searchValue, String searchCategory, Integer motorShowId) {
-        return this.carDao.getCountForSearch(searchValue,searchCategory, motorShowId);
+        return carDao.getCountForSearch(searchValue,searchCategory, motorShowId);
     }
 
     public Long getCarOfShowCount(Integer motorShowId) {
@@ -68,15 +71,14 @@ public class CarServiceImpl implements CarService {
     }
 
     public List<Car> getCarsBySearch(Object searchValue, String searchCategory, Integer PageNumber, Integer PageSize) {
-        return this.carDao.getObjectsForSearch(null, searchValue, searchCategory, PageNumber, PageSize);
+        return carDao.getObjectsForSearch(null, searchValue, searchCategory, PageNumber, PageSize);
     }
 
     public List<Car> getCarsBySearchInMotorShow(Integer motorShowId, Object searchValue, String searchCategory, Integer PageNumber, Integer PageSize) {
-        return this.carDao.getObjectsForSearch(motorShowId, searchValue, searchCategory, PageNumber, PageSize);
+        return carDao.getObjectsForSearch(motorShowId, searchValue, searchCategory, PageNumber, PageSize);
     }
 
     public void deleteCar(Integer id) {
-        carDao.deleteById(carDao.getById(id));
+        carDao.delete(carDao.getById(id));
     }
-
 }

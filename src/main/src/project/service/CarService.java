@@ -1,14 +1,14 @@
 package project.service;
 
-import project.exception.DaoException;
 import project.exception.ValidException;
 import project.model.Car;
 
 import java.util.List;
 
+
 public interface CarService {
 
-    void saveCar(Car car) throws ValidException, DaoException;
+    void saveCar(Car car) throws ValidException;
 
     List<Car> getCarsByMSId(Integer motorShowId, Integer pageNumber, Integer pageSize);
 
@@ -31,4 +31,6 @@ public interface CarService {
     List<Car> getCarsBySearch(Object searchValue,String searchCategory,Integer PageNumber,Integer PageSize);
 
     List<Car> getCarsBySearchInMotorShow(Integer motorShowId, Object searchValue,String searchCategory,Integer PageNumber,Integer PageSize);
+
+
 }

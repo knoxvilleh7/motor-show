@@ -6,20 +6,17 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Objects;
 
-@Repository
+@Transactional
 class NewDaoGenericsImpl<T> implements NewDaoGenerics<T> {
+
     SessionFactory sessionFactory;
 
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
-    Class aClass;
+    private Class aClass;
 
     NewDaoGenericsImpl(Class aClass) {
         this.aClass = aClass;
@@ -27,12 +24,7 @@ class NewDaoGenericsImpl<T> implements NewDaoGenerics<T> {
 
     @Override
     public void saveOrUpdate(T obj) {
-        Session session = sessionFactory.getCurrentSession();
-        try {
-            session.saveOrUpdate(obj);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        sessionFactory.getCurrentSession().saveOrUpdate(obj);
     }
 
     @Override
@@ -65,11 +57,13 @@ class NewDaoGenericsImpl<T> implements NewDaoGenerics<T> {
     }
 
     @Override
-    public void deleteById(T obj) {
+    public void delete(T obj) {
+
         Session session = sessionFactory.getCurrentSession();
         try {
             session.delete(obj);
-        } catch (RuntimeException ignored) {
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -101,7 +95,7 @@ class NewDaoGenericsImpl<T> implements NewDaoGenerics<T> {
         try {
             criteria = session.createCriteria(aClass);
             if (id != null) {
-                criteria.add(Restrictions.like("motorShowId", id));
+                criteria.add(Restrictions.like("motorShow.id", id));
             }
             criteria.add(Restrictions.like(searchCategory, searchValue));
             criteria.setProjection(Projections.rowCount());
@@ -113,19 +107,19 @@ class NewDaoGenericsImpl<T> implements NewDaoGenerics<T> {
 
     @SuppressWarnings("unchecked")
     public List<T> getObjectsForSearch(Integer id, Object searchValue, String searchCategory, Integer pageNumber, Integer pageSize) {
-        List<T> objects = null;
+        List<T> objs = null;
         Session session = sessionFactory.getCurrentSession();
         try {
             Criteria criteria = session.createCriteria(aClass).add(Restrictions.like(searchCategory, searchValue));
             if (id != null) {
-                criteria.add(Restrictions.like("motorShowId", id));
+                criteria.add(Restrictions.like("motorShow.id", id));
             }
             criteria.setFirstResult((pageNumber - 1) * pageSize);
             criteria.setMaxResults(pageSize);
-            objects = criteria.list();
+            objs = criteria.list();
         } catch (RuntimeException ignored) {
         }
-        return objects;
+        return objs;
     }
 }
 

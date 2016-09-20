@@ -1,75 +1,93 @@
 .container {
     width: auto;
 }
-.form{
- color: #ffffff;
+
+.select {
+    color: #0f0f0f;
+    width: 170px;
 }
-.carEdition {
-    height: 550px;
-    margin-left: 4%;
+.searchSelect{
+    width: 170px;
+}
+
+.form {
+    color: #ffffff;
 }
 .btn-Edit{
     background-color: #64696e;
 }
-.navbar-nav{
+
+.carEdition {
+    height: 550px;
+    margin-left: 4%;
+}
+.navbar-nav {
     width: 1020px;
 }
-.search{
+
+.search {
     width: 290px;
 }
+
 .menu-bar {
     width: 70px;
     height: 50px;
 }
+
 .menu-bar-beg {
     width: 120px;
     height: 50px;
 }
-.menu-bar-page{
+
+.menu-bar-page {
     margin-left: 20px;
     width: 75px;
     height: 50px;
 }
-.menu-bar-count{
+
+.menu-bar-count {
     margin-left: 10px;
     width: 40px;
     height: 50px;
 }
-.bar-left{
+
+.bar-left {
     width: 1000px;
 }
-.pageCount{
+
+.pageCount {
     width: 27px;
     height: 30px;
 }
-.select{
-    width: 155px;
-}
-.selectMotorShow{
-    background-color: rgba(43, 54, 55, 0.85);
-    width: 170px;
-}
+
 .motorShowEdition {
     height: 550px;
     margin-top: 7%;
 }
-.search-ms{
+
+.search-ms {
     margin-left: 20px;
+}
+
+body.main {
+    background-image: url("/img/lol.jpg");
 }
 
 body.carEdit {
     background-image: url("/img/bmv.jpg");
+    background-size: cover;
 }
-body.motorShowEdit {
-    background-color: #949e9e;
 
+body.motorShowEdit {
+    background-color: #c6d1cd;
 }
 
 .refs {
     margin-top: 310px;
     margin-left: 120px;
 }
-.btn-navbar{
+
+.btn-navbar {
     border-color: #ffffff;
     width: 80px;
     height: 40px;
@@ -113,6 +131,7 @@ body.motorShowEdit {
     margin-bottom: 5px;
 
 }
+
 .text-right {
     color: #ffffff;
 }
@@ -145,9 +164,10 @@ body.motorShowEdit {
 }
 
 .table_price th {
+    vertical-align: top;
     text-align: left;
-    font-size: 18px;
-    width: 135px;
+    font-size: 20px;
+    width: 110px;
 }
 
 .table_price tr:nth-child(2n) {
@@ -161,12 +181,68 @@ body.motorShowEdit {
 .table_price a {
     display: inline-block;
     padding: 5px 10px;
-    background: #F79361;
-    box-shadow: 2px 2px 0 0 #a22800;
+    background: #2eff93;
+    box-shadow: 2px 2px 0 0 #000000;
     position: relative;
 }
 
 .table_price a:hover {
+    box-shadow: none;
+    top: 2px;
+    left: 2px;
+}
+
+.table_price_1 {
+    margin-top: 60px;
+    border-collapse: collapse;
+    border-left: 3px solid white;
+    border-right: 3px solid white;
+    border-bottom: 3px solid white;
+    font-family: "Lucida Grande", sans-serif;
+    margin-bottom: 40px;
+}
+
+.table_price_1 caption {
+    background: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px;
+    color: #000000;
+    font-family: "Roboto Slab", serif;
+    font-style: normal;
+    font-size: 26px;
+    text-align: center;
+    margin: 0;
+}
+
+.table_price_1 td, .table_price_1 th {
+    padding: 10px;
+}
+
+.table_price_1 th {
+    vertical-align: top;
+    text-align: left;
+    font-size: 20px;
+    width: 200px;
+}
+
+.table_price_1 tr:nth-child(2n) {
+    background: #E5E5E5;
+}
+
+.table_price_1 td:last-of-type {
+    text-align: center;
+}
+
+.table_price_1 a {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #2eff93;
+    box-shadow: 2px 2px 0 0 #000000;
+    position: relative;
+}
+
+.table_price_1 a:hover {
     box-shadow: none;
     top: 2px;
     left: 2px;

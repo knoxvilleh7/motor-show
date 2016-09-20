@@ -2,21 +2,19 @@ package project.service;
 
 import project.model.Page;
 
-import javax.servlet.http.HttpServletRequest;
-
 public interface PageService {
 
     Long getNumberOfPages(Long Cars, Integer NumberOfCars);
 
-    Page getPageForAllCars(HttpServletRequest request);
+    Page getPageForAllCars(Integer pageSize, Integer pageNumber );
 
-    Page getPageForSearchCars(HttpServletRequest request, Object searchValue, String searchCategory);
+    Page getPageForSearchCars(Integer pageSize, Integer pageNumber , Object searchValue, String searchCategory);
 
-    Page getPageForAllMotorShows(HttpServletRequest request);
+    Page getPageForAllMotorShows(Integer pageSize, Integer pageNumber );
 
-    Page getPageForSearchMotorShows(HttpServletRequest request, Object searchValue, String searchCategory);
+    Page getPageForSearchMotorShows(Integer pageSize, Integer pageNumber , Object searchValue, String searchCategory);
 
-    Page getPageForCarsInMotorShow(HttpServletRequest request, Integer motorShowId);
+    Page getPageForCarsInMotorShow(Integer pageSize, Integer pageNumber , Integer motorShowId);
 
-    Page getPageForSearchCarsInMotorShow(HttpServletRequest request, Object searchValue, String searchCategory, Integer motorShowId);
+    Page getPageForSearchCarsInMotorShow(Integer pageSize, Integer pageNumber , Object searchValue, String searchCategory, Integer motorShowId);
 }
