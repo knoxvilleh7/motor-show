@@ -15,12 +15,13 @@ import java.util.List;
  * Created on 16.08.2016.
  */
 public class CarsOfShow implements RequestInterface {
-    private CarService carService = new CarServiceImpl();
+    private final CarService carService = new CarServiceImpl();
     public void method(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String i = request.getParameter("MS");
         int msid = Integer.parseInt(i);
         List<Car> cars = carService.getCarsByMSId (msid);
         request.setAttribute("cars", cars);
         request.getRequestDispatcher("/pages/mscars.jsp").forward(request, response);
+        request.getRequestDispatcher("/pages/mscars.jsp").include(request, response);
     }
 }
